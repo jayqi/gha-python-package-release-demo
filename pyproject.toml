@@ -15,7 +15,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "git+https://github.com/drivendataorg/vspect.git#egg=vspect",
+    "vspect @ git+https://github.com/drivendataorg/vspect.git#egg=vspect",
 ]
 docs = [
     "mkdocs",
