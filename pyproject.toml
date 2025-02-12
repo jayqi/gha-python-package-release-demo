@@ -1,0 +1,23 @@
+[project]
+name = "gha-release-demo-pkg"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jay Qi", email = "jayqi@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "git+https://github.com/drivendataorg/vspect.git#egg=vspect",
+]
+docs = [
+    "mkdocs",
+    "mike",
+]
