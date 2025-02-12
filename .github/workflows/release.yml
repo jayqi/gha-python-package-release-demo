@@ -41,7 +41,7 @@ jobs:
       - name: Get docs identifier
         id: version
         run: |
-          IDENTIFIER=$(uv run python -m vspect gha_release_demo_pkg "{major_minor_version}")
+          IDENTIFIER=$(uv run python -m vspect read . "{major_minor_version}")
           echo "Identifier: [$IDENTIFIER]"
           echo "::set-output name=IDENTIFIER::$IDENTIFIER"
 
