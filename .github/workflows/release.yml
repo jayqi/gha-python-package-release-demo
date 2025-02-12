@@ -19,6 +19,8 @@ jobs:
   build:
     name: Build and publish new release
     runs-on: "ubuntu-latest"
+    permissions:
+      id-token: write  # required for PyPI Trusted Publishing
 
     steps:
       - uses: actions/checkout@v4
@@ -47,12 +49,10 @@ jobs:
 
 
       - name: Publish to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.3.0
+        uses: pypa/gh-action-pypi-publish@v1.12.4
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_TEST_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
-          skip_existing: true
+          repository-url: https://test.pypi.org/legacy/
+          skip-existing: true
 
       - name: Publish to Production PyPI
         run: |
