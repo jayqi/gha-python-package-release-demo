@@ -58,22 +58,22 @@ jobs:
         run: |
           echo "pass"
 
-      - name: Deploy docs to gh-pages
-        working-directory: docs
-        run: |
-          git fetch origin gh-pages --depth=1
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          # Rename old stable version
-          # mike list -j | jq
-          # OLD_STABLE=$(mike list -j | jq -r '.[] | select(.aliases | index("stable")) | .title' | awk '{print $1;}')
-          # echo $OLD_STABLE
-          # mike retitle stable $OLD_STABLE
-          # Deploy new version as stable
-          mike deploy --push --update-aliases --no-redirect \
-            ${{ steps.version.outputs.major_minor_version }} \
-            stable \
-            --title="${{ github.event.release.tag_name }} (stable)"
+      # - name: Deploy docs to gh-pages
+      #   working-directory: docs
+      #   run: |
+      #     git fetch origin gh-pages --depth=1
+      #     git config user.name github-actions[bot]
+      #     git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      #     # Rename old stable version
+      #     # mike list -j | jq
+      #     # OLD_STABLE=$(mike list -j | jq -r '.[] | select(.aliases | index("stable")) | .title' | awk '{print $1;}')
+      #     # echo $OLD_STABLE
+      #     # mike retitle stable $OLD_STABLE
+      #     # Deploy new version as stable
+      #     mike deploy --push --update-aliases --no-redirect \
+      #       ${{ steps.version.outputs.major_minor_version }} \
+      #       stable \
+      #       --title="${{ github.event.release.tag_name }} (stable)"
 
       - id: extract-changelog
         uses: sean0x42/markdown-extract@v2.1.0
