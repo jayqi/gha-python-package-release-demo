@@ -52,7 +52,9 @@ jobs:
 
       - name: Write output to file
         run: |
-          printf '${{ steps.extract-changelog.outputs.markdown }}' > __CHANGELOG-extracted.md
+          cat <<'EOF' > __CHANGELOG-extracted.md
+          ${{ steps.extract-changelog.outputs.markdown }}
+          EOF
 
       - uses: ncipollo/release-action@v1
         with:
